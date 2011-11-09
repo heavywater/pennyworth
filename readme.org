@@ -1,0 +1,80 @@
+* pennyworth
+
+  #+BEGIN_QUOTE
+  Bruce Wayne: Rebuild it. Just the way it was, brick for brick.
+
+  Alfred Pennyworth: *Just* the way it was, sir?
+
+  Bruce Wayne: Yeah. Why?
+
+  Alfred Pennyworth: I thought this might be a good opportunity for improving the foundations.
+  #+END_QUOTE
+
+  Based upon the principles of continuous integration, pennyworth will
+  help you build assets for any software you use and provides a
+  reasonable means to distribute it throughout your nodes. By using a
+  well tested package management system under the hood for deployment, you can easily roll back versions and manage node
+  level conflicts.
+
+  Jenkins can be configured to search for feature branches, for
+  advanced workflows.
+
+  Many example data bags are included that show how to test, build and
+  package a variety of projects, including Ruby and Clojure projects.
+
+** vagrant support
+   - you can use 'vagrant up' to launch a virtualbox instance based on
+     Ubuntu Natty 11.04 amd64 to run pennyworth
+
+** chef cookbooks
+*** jenkins
+    - Based on Fletcher Nichols' [[https://github.com/fnichol/chef-jenkins][chef-jenkins cookbook]]
+*** pennyworth
+**** recipe: ssh_keys
+     - drops keypairs off for Jenkins, so it can talk to your Git infrastructure later.
+**** recipe: remount_ephemeral
+     - on ec2, remount the ephemeral device (with an appropriate
+       filesystem and such) at a convenient location for jenkins
+**** recipe: riak
+     - in one of our deployments a pennyworth project required riak,
+       so we shipped it
+**** recipe: default
+     - consumes the pennyworth databag items individually, adding them
+       to jenkins and so on.
+**** recipe: update_version
+     - ships the update_version script which updates the "package"
+       data bag versions for each job
+*** [[http://mirrorer.alioth.debian.org/][reprepro]]
+    - reprepro (formerly known as mirrorer) is a nasty old debian tool
+      that you can use to manage an APT repository
+    - could easily slot something like
+      [[https://github.com/rcrowley/freight][Richard Crowley's freight]] project in here
+*** apt
+    - upstream opscode cookbook, provides apt repository LWRP which is used to
+      install the repository hosted on the jenkins node
+*** java
+    - upstream opscode cookbook, installs java
+*** leiningen
+    - installs the leiningen build tool for clojure
+** data bags
+*** package
+    - this allows for an API client to query the chef server for
+      available versions
+    - can be updated at end-of-build by Jenkins (examples included)
+*** pennyworth
+    - multiple types of jenkins jobs
+**** testing
+     - Git based, runs test commands
+**** packaging
+     - Git based, runs test, build and package commands.
+     - Examples included for building packages with fpm
+     - Packages built with fpm can be included into a Reprepro package
+       repository on the system
+** other tools
+*** [[https://github.com/jordansissel/fpm][fpm]]
+   - fpm allows us to build debian packages out of basically anything,
+     including cool stuff like ruby gems and python eggs
+   - we use it inside of pennyworth jenkins projects to build
+     architecture-specific assets of varying types of projects
+** knife deploy plugin
+   - to be documented
