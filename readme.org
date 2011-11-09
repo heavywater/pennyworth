@@ -1,4 +1,4 @@
-* pennyworth
+* pennyworth 0.2.0
 
   #+BEGIN_QUOTE
   Bruce Wayne: Rebuild it. Just the way it was, brick for brick.
@@ -17,7 +17,7 @@
   level conflicts.
 
   Jenkins can be configured to search for feature branches, for
-  advanced workflows.
+  advanced workflows. We've included some examples for basic branch tracking.
 
   Many example data bags are included that show how to test, build and
   package a variety of projects, including Ruby and Clojure projects.
