@@ -95,7 +95,7 @@
       <localVarText>PATH=.env/bin:$PATH
 DESTDIR=$WORKSPACE/fpm
 VERSION=<%= "#{@version["major"]}.#{@version["minor"]}." %>$BUILD_NUMBER
-LSB_CODENAME=<%= node.lsb.codename -%>
+LSB_CODENAME=<%= node.lsb.codename %>
 </localVarText>
     </hudson.plugins.setenv.SetEnvBuildWrapper>
   </buildWrappers>

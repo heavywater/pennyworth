@@ -21,6 +21,12 @@
 
 include_recipe "build-essential"
 
+package "ia32-libs" do
+  only_if do
+    node.kernel.machine =~ /x86_64/
+  end
+end
+
 node.pennyworth.package_dependencies.map do |pkg|
   package pkg
 end

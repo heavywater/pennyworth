@@ -1,4 +1,4 @@
-#!/opt/ruby/bin/ruby
+#!/usr/bin/env ruby
 
 require "rubygems"
 require "json"
