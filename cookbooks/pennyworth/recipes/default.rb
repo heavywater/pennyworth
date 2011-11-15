@@ -31,21 +31,27 @@ template "/var/lib/jenkins/.gitconfig" do
   group node.jenkins.server.group
 end
 
-# gnupg = "/var/lib/jenkins/.gnupg"
-# directory gnupg do
-#   mode 0700
-#   owner node.jenkins.server.user
-#   group node.jenkins.server.group
-# end
+gnupg = "/var/lib/jenkins/.gnupg"
+directory gnupg do
+  mode 0700
+  owner node.jenkins.server.user
+  group node.jenkins.server.group
+end
 
-# %w[pubring.gpg secring.gpg trustdb.gpg].map do |gpg_cookbook_file|
-#   cookbook_file File.join(gnupg, gpg_cookbook_file) do
-#     cookbook "reprepro"
-#     mode 0600
-#     owner node.jenkins.server.user
-#     group node.jenkins.server.group
-#   end
-# end
+%w[pubring.gpg secring.gpg trustdb.gpg].map do |gpg_cookbook_file|
+  source = File.join("/root", ".gnupg", gpg_cookbook_file)
+  target = File.join(gnupg, gpg_cookbook_file)
+
+  execute "cp #{source} #{target}" do
+    creates target
+  end
+
+  file target do
+    mode 0700
+    owner node.jenkins.server.user
+    group node.jenkins.server.group
+  end
+end
 
 file "/etc/sudoers.d/jenkins" do
   content "jenkins ALL = (ALL) NOPASSWD: /bin/chown jenkins\\:jenkins -R /var/lib/jenkins/jobs/, /usr/local/bin/rake, /usr/local/bin/bundle, /usr/local/bin/gem, /usr/bin/reprepro, /usr/bin/apt-get, /usr/local/bin/update_version.rb\n"

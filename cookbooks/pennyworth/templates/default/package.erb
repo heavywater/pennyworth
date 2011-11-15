@@ -48,7 +48,8 @@
     <hudson.plugins.setenv.SetEnvBuildWrapper>
       <localVarText>PATH=.env/bin:$PATH
 DESTDIR=$WORKSPACE/fpm
-LSB_CODENAME=<%= node.lsb.codename -%></localVarText>
+LSB_CODENAME=<%= node.lsb.codename %>
+</localVarText>
     </hudson.plugins.setenv.SetEnvBuildWrapper>
   </buildWrappers>
 </project>
