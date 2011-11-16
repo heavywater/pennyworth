@@ -15,6 +15,7 @@ default_attributes( "java" => { "install_flavor" => "openjdk" },
                         "variant" => "apache2"
                       },
                       "server" => {
+                        "host" => "127.0.0.1",
                         "plugins" => [
                                       'setenv',
                                       'git',

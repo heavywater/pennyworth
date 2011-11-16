@@ -15,16 +15,15 @@
     "make install DESTDIR=\$DESTDIR"
   ],
   "package_commands": [
-    "mkdir -d fpm",
-    "cd fpm",
-    "fpm -s dir -t deb -n ruby1.9.3-full -v \$VERSION -C \$DESTDIR -p ruby1.9.3-full-VERSION_ARCH.deb --post-install /var/lib/jenkins/ldconfig usr/local/bin usr/local/include /usr/local/lib usr/local/share",
+    "mkdir -p fpm",
+    "cd fpm; fpm -s dir -t deb -n ruby1.9.3-full -v \$VERSION -C \$DESTDIR -p ruby1.9.3-full-VERSION_ARCH.deb --post-install /var/lib/jenkins/ldconfig usr/local/bin usr/local/include /usr/local/lib usr/local/share",
     "sudo /usr/bin/reprepro -Vb /srv/apt includedeb \$LSB_CODENAME \$DESTDIR/ruby1.9.3-full-\$VERSION_*.deb",
     "sudo /usr/local/bin/update_version.rb \$JOB_NAME \$VERSION"
   ],
   "child_projects" : [
       "install-dependency-packages"
   ],
-  "remote_poll": false,
+  "remote_poll": true,
   "clean" : true,
   "wipeoutworkspace" : true
 }
