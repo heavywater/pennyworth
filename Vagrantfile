@@ -2,7 +2,7 @@ Vagrant::Config.run do |config|
   config.vm.define :pennyworth do |pennyworth|
     pennyworth.vm.customize do |vm|
       vm.memory_size = 4096
-      # vm.cpus = 8
+      # vm.cpu_count = 8
     end
     pennyworth.vm.box = "natty64"
     pennyworth.vm.box_url = "https://s3.amazonaws.com/hw-vagrant/natty64.box"
