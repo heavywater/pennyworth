@@ -11,8 +11,9 @@ cookbook 'java', '1.1.0'
 cookbook 'jenkins', '0.6.0' # Can this be modified with cookbooks-overrides over fnichol's git pull?
 cookbook 'leiningen', '0.2.0'
 cookbook 'pennyworth', '0.2.1'
-cookbook 'reprepro', '0.2.2'
 cookbook 'runit', '0.14.2'
 
 cookbook 'postfix',
   :path => 'cookbooks-sources' # why not using opscode vers?
+cookbook 'reprepro',
+  :path => 'cookbooks-sources'
