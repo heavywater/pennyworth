@@ -10,7 +10,7 @@ Vagrant::Config.run do |config|
     pennyworth.vm.forward_port "jenkins", 8080, 8080, :auto => true
     pennyworth.vm.provision :chef_solo do |chef|
       chef.data_bags_path = "data_bags"
-      chef.cookbooks_path = "cookbooks"
+      chef.cookbooks_path = [ "cookbooks", "cookbooks-overrides" ]
       chef.roles_path = "roles"
       chef.add_role "pennyworth"
     end
