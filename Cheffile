@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'apache2', '0.99.4'
+cookbook 'apt', '1.1.2'
+cookbook 'build-essential', '1.0.0'
+cookbook 'gpg', '0.0.1'
+cookbook 'java', '1.1.0'
+cookbook 'jenkins', '0.6.0' # Can this be modified with cookbooks-overrides over fnichol's git pull?
+cookbook 'leiningen', '0.2.0'
+cookbook 'pennyworth', '0.2.1'
+cookbook 'reprepro', '0.2.2'
+cookbook 'runit', '0.14.2'
+
+cookbook 'postfix',
+  :path => 'cookbooks-sources' # why not using opscode vers?
