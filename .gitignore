@@ -1,5 +1,6 @@
 cookbooks
 tmp
+metadata.json
 readme.html
 iso
 *.box
