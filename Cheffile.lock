@@ -23,15 +23,17 @@ SITE
       leiningen (>= 0.0.0)
       postfix (>= 0.0.0)
       reprepro (>= 0.0.0)
-    reprepro (0.2.2)
-      apache2 (>= 0)
-      build-essential (>= 0)
     runit (0.14.2)
 
 PATH
   remote: cookbooks-sources
   specs:
     postfix (0.1.0)
+    reprepro (0.2.2)
+      apache2 (>= 0.0.0)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      gpg (>= 0.0.0)
 
 DEPENDENCIES
   apache2 (= 0.99.4)
@@ -43,6 +45,6 @@ DEPENDENCIES
   leiningen (= 0.2.0)
   pennyworth (= 0.2.1)
   postfix (>= 0)
-  reprepro (= 0.2.2)
+  reprepro (>= 0)
   runit (= 0.14.2)
 
