@@ -5,7 +5,7 @@
   ],
   "build_commands" : [
     "sudo /usr/bin/apt-get update",
-    "sudo /usr/bin/apt-get install ruby1.9.2-full -y"
+    "sudo /usr/bin/apt-get install ruby1.9.3-full -y"
   ],
   "package_commands" : [
     "true"
