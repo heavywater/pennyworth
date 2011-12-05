@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description><%= @project_description %></description>
+  <logRotator>
+    <daysToKeep><%= @days_to_keep_logs %>7</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>true</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <% @build_commands.each do |build_command| -%>
+    <hudson.tasks.Shell>
+        <command><%= build_command %></command>
+    </hudson.tasks.Shell>
+    <% end -%>
+    <% @package_commands.each do |package_command| -%>
+    <hudson.tasks.Shell>
+        <command><%= package_command %></command>
+    </hudson.tasks.Shell>
+    <% end -%>
+  </builders>
+  <publishers>
+    <hudson.tasks.Mailer>
+      <recipients><%= @mailer_recipients %></recipients>
+      <dontNotifyEveryUnstableBuild>true</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+    <% unless @child_projects.empty? %>
+    <hudson.tasks.BuildTrigger>
+      <childProjects><%= @child_projects.join(",") -%></childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
+    <% end %>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.setenv.SetEnvBuildWrapper>
+      <localVarText>PATH=.env/bin:$PATH
+DESTDIR=$WORKSPACE/fpm
+LSB_CODENAME=<%= node.lsb.codename %>
+</localVarText>
+    </hudson.plugins.setenv.SetEnvBuildWrapper>
+  </buildWrappers>
+</project>
