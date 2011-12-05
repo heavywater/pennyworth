@@ -35,7 +35,7 @@ end
 
 execute "android: create android virtual device (avd)" do
   command "echo 'no' | #{android_binary} create avd " +
-    "--name #{node[:pennyworth][:android][:avd]} --target 3 --path /opt/avd --force"
+    "--name #{node[:pennyworth][:android][:avd]} --target #{node[:pennyworth][:android][:target]} --path /opt/avd --force"
   creates "/opt/avd"
 end
 
