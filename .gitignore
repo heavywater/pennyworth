@@ -1,6 +1,7 @@
 cookbooks
 tmp
 metadata.json
+.DS_Store
 readme.html
 iso
 *.box
