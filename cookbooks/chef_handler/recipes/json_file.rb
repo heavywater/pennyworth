@@ -1,9 +1,9 @@
 #
-# Author:: Joshua Timberman(<joshua@opscode.com>)
-# Cookbook Name:: postfix
-# Recipe:: default
+# Author:: Seth Chisamore (<schisamo@opscode.com>)
+# Cookbook Name:: chef_handlers
+# Recipe:: json_file
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2011, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,20 +18,11 @@
 # limitations under the License.
 #
 
-package "postfix" do
-  action :install
-end
+# force resource actions in compile phase so exception handler 
+# fires for compile phase exceptions
 
-service "postfix" do
-  action :enable
-end
-
-%w{main master}.each do |cfg|
-  template "/etc/postfix/#{cfg}.cf" do
-    source "#{cfg}.cf.erb"
-    owner "root"
-    group "root"
-    mode 0644
-    notifies :restart, resources(:service => "postfix")
-  end
-end
+chef_handler "Chef::Handler::JsonFile" do
+  source "chef/handler/json_file"
+  arguments :path => '/var/chef/reports'
+  action :nothing
+end.run_action(:enable)

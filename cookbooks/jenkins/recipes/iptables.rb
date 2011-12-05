@@ -1,9 +1,10 @@
 #
-# Author:: Joshua Timberman(<joshua@opscode.com>)
-# Cookbook Name:: postfix
-# Recipe:: default
+# Cookbook Name:: jenkins
+# Recipe:: iptables
 #
-# Copyright 2009, Opscode, Inc.
+# Author:: Fletcher Nichol <fnichol@nichol.ca>
+#
+# Copyright 2011, Fletcher Nichol.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,20 +19,13 @@
 # limitations under the License.
 #
 
-package "postfix" do
-  action :install
-end
-
-service "postfix" do
-  action :enable
-end
-
-%w{main master}.each do |cfg|
-  template "/etc/postfix/#{cfg}.cf" do
-    source "#{cfg}.cf.erb"
-    owner "root"
-    group "root"
-    mode 0644
-    notifies :restart, resources(:service => "postfix")
+if platform?("redhat","centos","debian","ubuntu")
+  include_recipe "iptables"
+  iptables_rule "port_jenkins" do
+    if node['jenkins']['iptables_allow'] == "enable"
+      enable true
+    else
+      enable false
+    end
   end
 end

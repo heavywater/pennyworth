@@ -1,0 +1,50 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    apache2 (0.99.4)
+    apt (1.1.2)
+    build-essential (1.0.0)
+    chef_handler (1.0.4)
+    gpg (0.0.1)
+      minitest (>= 0.0.0)
+    java (1.1.0)
+      apt (>= 0)
+    leiningen (0.2.0)
+      java (>= 0)
+    minitest (0.1.5)
+      chef_handler (~> 1.0.4)
+    postfix (0.8.4)
+    runit (0.14.2)
+
+PATH
+  remote: cookbooks-sources
+  specs:
+    jenkins (0.6.0)
+      java (>= 0.0.0)
+      runit (>= 0.0.0)
+    pennyworth (0.2.1)
+      build-essential (>= 0.0.0)
+      java (>= 0.0.0)
+      jenkins (>= 0.0.0)
+      leiningen (>= 0.0.0)
+      postfix (>= 0.0.0)
+      reprepro (>= 0.0.0)
+    reprepro (0.3.0)
+      apache2 (>= 0.0.0)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      gpg (>= 0.0.0)
+
+DEPENDENCIES
+  apache2 (= 0.99.4)
+  apt (= 1.1.2)
+  build-essential (= 1.0.0)
+  gpg (= 0.0.1)
+  java (= 1.1.0)
+  jenkins (>= 0)
+  leiningen (= 0.2.0)
+  pennyworth (>= 0)
+  postfix (= 0.8.4)
+  reprepro (>= 0)
+  runit (= 0.14.2)
+

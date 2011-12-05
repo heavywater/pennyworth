@@ -1,9 +1,9 @@
 #
-# Author:: Joshua Timberman(<joshua@opscode.com>)
-# Cookbook Name:: postfix
+# Author:: Seth Chisamore (<schisamo@opscode.com>)
+# Cookbook Name:: chef_handlers
 # Recipe:: default
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2011, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,20 +18,14 @@
 # limitations under the License.
 #
 
-package "postfix" do
-  action :install
-end
+Chef::Log.info("Chef Handlers will be at: #{node['chef_handler']['handler_path']}")
 
-service "postfix" do
-  action :enable
-end
+remote_directory node['chef_handler']['handler_path'] do
+  source 'handlers'
+  owner 'root'
+  group 'root'
+  mode "0755"
+  recursive true
+  action :nothing
+end.run_action(:create)
 
-%w{main master}.each do |cfg|
-  template "/etc/postfix/#{cfg}.cf" do
-    source "#{cfg}.cf.erb"
-    owner "root"
-    group "root"
-    mode 0644
-    notifies :restart, resources(:service => "postfix")
-  end
-end

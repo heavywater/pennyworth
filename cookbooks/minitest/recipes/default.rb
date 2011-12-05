@@ -1,9 +1,8 @@
 #
-# Author:: Joshua Timberman(<joshua@opscode.com>)
-# Cookbook Name:: postfix
+# Cookbook Name:: minitest
 # Recipe:: default
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2011, AJ Christensen <aj@junglist.gen.nz>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,21 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+gem_package "minitest" do
+  version "2.3.1"
+#  version "~> 2.3.1"
+end.run_action(:install)
 
-package "postfix" do
-  action :install
+node.minitest.gem_dependencies.each do |gem|
+  gem_package(gem) { action :nothing }.run_action(:install)
 end
 
-service "postfix" do
-  action :enable
-end
+include_recipe "chef_handler"
+cookbook_file(File.join(node.chef_handler.handler_path, "chefminitest.rb")).run_action(:create)
+chef_handler "ChefMiniTest::Handler" do
+  source File.join(node.chef_handler.handler_path, "chefminitest.rb")
+  action :nothing
+end.run_action(:enable)
 
-%w{main master}.each do |cfg|
-  template "/etc/postfix/#{cfg}.cf" do
-    source "#{cfg}.cf.erb"
-    owner "root"
-    group "root"
-    mode 0644
-    notifies :restart, resources(:service => "postfix")
-  end
-end

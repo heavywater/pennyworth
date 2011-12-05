@@ -26,6 +26,10 @@
    - you can use 'vagrant up' to launch a virtualbox instance based on
      Ubuntu Natty 11.04 amd64 to run pennyworth
 
+** librarian support
+   - install the [[https://github.com/applicationsonline/librarian][librarian]] gem and run 'librarian-chef install' to build
+     the cookbooks directory and populate it with cookbooks.
+
 ** chef cookbooks
 *** jenkins
     - Based on Fletcher Nichols' [[https://github.com/fnichol/chef-jenkins][chef-jenkins cookbook]]
