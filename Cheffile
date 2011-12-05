@@ -8,12 +8,15 @@ cookbook 'apt',             '1.1.2'
 cookbook 'build-essential', '1.0.0'
 cookbook 'gpg',             '0.0.1'
 cookbook 'java',            '1.1.0'
-cookbook 'jenkins',         '0.6.0' # Can this be modified with cookbooks-overrides over fnichol's git pull?
+cookbook 'jenkins',
+  :git => 'git@github.com:patcon/chef-jenkins.git',
+  :ref =>                   '0.6.0'
 cookbook 'leiningen',       '0.2.0'
-cookbook 'pennyworth',      '0.2.1'
-cookbook 'runit',           '0.14.2'
-
-cookbook 'postfix',
-  :path => 'cookbooks-sources'      # why not using opscode vers?
+cookbook 'pennyworth',
+  :git => 'git@github.com:patcon/chef-pennyworth.git',
+  :ref =>                   '0.2.1'
+cookbook 'postfix',         '0.8.4'
 cookbook 'reprepro',
-  :path => 'cookbooks-sources'
+  :git => 'git@github.com:patcon/chef-reprepro.git',
+  :ref =>                   '0.3.0'
+cookbook 'runit',           '0.14.2'
