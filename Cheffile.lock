@@ -16,20 +16,12 @@ SITE
     postfix (0.8.4)
     runit (0.14.2)
 
-GIT
-  remote: git@github.com:patcon/chef-jenkins.git
-  ref: 0.6.0
-  sha: f08128a26c6e95b0addd8f1908a43b7a13ae9222
+PATH
+  remote: cookbooks-sources
   specs:
     jenkins (0.6.0)
       java (>= 0.0.0)
       runit (>= 0.0.0)
-
-GIT
-  remote: git@github.com:patcon/chef-pennyworth.git
-  ref: 0.2.1
-  sha: 09f7e399052c25737e791e3cc58a690eb94fceff
-  specs:
     pennyworth (0.2.1)
       build-essential (>= 0.0.0)
       java (>= 0.0.0)
@@ -37,12 +29,6 @@ GIT
       leiningen (>= 0.0.0)
       postfix (>= 0.0.0)
       reprepro (>= 0.0.0)
-
-GIT
-  remote: git@github.com:patcon/chef-reprepro.git
-  ref: 0.3.0
-  sha: d46b7c3028271309687f54a01bf45abdef8146c2
-  specs:
     reprepro (0.3.0)
       apache2 (>= 0.0.0)
       apt (>= 0.0.0)

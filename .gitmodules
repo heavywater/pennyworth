@@ -1,0 +1,9 @@
+[submodule "cookbooks-sources/pennyworth"]
+	path = cookbooks-sources/pennyworth
+	url = git@github.com:patcon/chef-pennyworth.git
+[submodule "cookbooks-sources/jenkins"]
+	path = cookbooks-sources/jenkins
+	url = git@github.com:patcon/chef-jenkins.git
+[submodule "cookbooks-sources/reprepro"]
+	path = cookbooks-sources/reprepro
+	url = git@github.com:patcon/chef-reprepro.git
