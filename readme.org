@@ -1,4 +1,4 @@
-* pennyworth 0.2.1
+* pennyworth 0.2.2
 
   #+BEGIN_QUOTE
   Bruce Wayne: Rebuild it. Just the way it was, brick for brick.
