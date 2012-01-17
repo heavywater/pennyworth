@@ -22,13 +22,13 @@
 #
 
 def job_url
-  job_url = "#{@new_resource.url}/job/#{@new_resource.job_name}/config.xml"
+  job_url = "#{new_resource.url}/job/#{new_resource.job_name}/config.xml"
   Chef::Log.debug "[jenkins_job] job_url: #{job_url}"
   job_url
 end
 
 def new_job_url
-  "#{@new_resource.url}/createItem?name=#{@new_resource.job_name}"
+  "#{new_resource.url}/createItem?name=#{new_resource.job_name}"
 end
 
 def job_exists
@@ -41,14 +41,14 @@ end
 def post_job(url)
   #shame we can't use http_request resource
   url = URI.parse(url)
-  Chef::Log.debug("[jenkins_job] POST #{url.request_uri} using #{@new_resource.config}")
-  body = IO.read(@new_resource.config)
+  Chef::Log.debug("[jenkins_job] POST #{url.request_uri} using #{new_resource.config}")
+  body = IO.read(new_resource.config)
   headers = {"Content-Type" => "text/xml"}
   res = Chef::REST::RESTRequest.new(:POST, url, body, headers).call
   res.error! unless res.kind_of?(Net::HTTPSuccess)
 end
 
-#could also use: jenkins_cli "create-job #{@new_resource.job_name} < #{@new_resource.config}"
+#could also use: jenkins_cli "create-job #{new_resource.job_name} < #{new_resource.config}"
 def action_create
   unless job_exists
     post_job(new_job_url)
@@ -65,17 +65,17 @@ def action_update
 end
 
 def action_delete
-  jenkins_cli "delete-job #{@new_resource.job_name}"
+  jenkins_cli "delete-job #{new_resource.job_name}"
 end
 
 def action_disable
-  jenkins_cli "disable-job #{@new_resource.job_name}"
+  jenkins_cli "disable-job #{new_resource.job_name}"
 end
 
 def action_enable
-  jenkins_cli "enable-job #{@new_resource.job_name}"
+  jenkins_cli "enable-job #{new_resource.job_name}"
 end
 
 def action_build
-  jenkins_cli "build #{@new_resource.job_name}"
+  jenkins_cli "build #{new_resource.job_name}"
 end
