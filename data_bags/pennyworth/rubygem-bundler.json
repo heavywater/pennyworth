@@ -1,0 +1,10 @@
+{ "id" : "rubygem-bundler",
+  "project_type" : "package",
+  "build_commands" : [
+    "fpm -s gem -t deb bundler"
+  ],
+  "package_commands" : [
+    //"sudo /usr/bin/reprepro -Vb /srv/apt remove \$LSB_CODENAME rubygem-bundler",
+    "sudo /usr/bin/reprepro -Vb /srv/apt includedeb \$LSB_CODENAME $\WORKSPACE/rubygem-bundler*.deb"
+  ]
+}

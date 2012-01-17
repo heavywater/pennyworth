@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site "http://community.opscode.com/api/v1"
+
+[ "runit",
+  "leiningen",
+  "build-essential",
+  "apache2",
+  "postfix",
+  "java",
+  "apt",
+  "ant" ].each do |cb|
+  cookbook cb
+end
+
+[ "pennyworth",
+  "reprepro",
+  "gpg" ].each do |git_cb|
+  cookbook( git_cb,
+            :git => "https://github.com/heavywater/chef-#{git_cb}",
+            :ref => "develop" )
+end

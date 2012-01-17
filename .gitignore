@@ -1,0 +1,10 @@
+readme.html
+iso
+*.box
+.vagrant
+.bundle
+*.swp
+*.swo
+.\#*
+cookbooks
+tmp

@@ -1,0 +1,18 @@
+{ "id" : "install-dependency-packages",
+  "project_type" : "package",
+  "test_commands" : [
+    "true"
+  ],
+  "build_commands" : [
+    "sudo /usr/bin/apt-get update",
+    "sudo /usr/bin/apt-get install ruby1.9.3-full -y"
+  ],
+  "package_commands" : [
+    "true"
+  ],
+  "child_projects" : [
+    "rubygem-bundler"
+  ]
+}
+
+
