@@ -1,0 +1,8 @@
+* Pennyworth
+** Librarian support
+   - To test, run:
+#+BEGIN_EXAMPLE
+bundle install
+bundle exec librarian-chef install --verbose
+bundle exec vagrant up
+#+END_EXAMPLE
