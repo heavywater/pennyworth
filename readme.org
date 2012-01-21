@@ -21,11 +21,19 @@
 
   Many example data bags are included that show how to test, build and
   package a variety of projects, including Ruby and Clojure projects.
+** Librarian support
+   - To test, run:
+   #+BEGIN_EXAMPLE
+   bundle install
+   bundle exec librarian-chef install --verbose
+   #+END_EXAMPLE
 
 ** vagrant support
    - you can use 'vagrant up' to launch a virtualbox instance based on
      Ubuntu Natty 11.04 amd64 to run pennyworth
-
+   #+BEGIN_EXAMPLE
+   bundle exec vagrant up
+   #+END_EXAMPLE
 ** chef cookbooks
 *** jenkins
     - Based on Fletcher Nichols' [[https://github.com/fnichol/chef-jenkins][chef-jenkins cookbook]]

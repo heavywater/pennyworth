@@ -1,0 +1,66 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    ant (0.10.1)
+      java (>= 0)
+      jpackage (>= 0)
+    apache2 (1.0.8)
+    apt (1.2.2)
+    build-essential (1.0.0)
+    java (1.1.0)
+      apt (>= 0)
+    jenkins (0.6.1)
+      java (>= 0.0.0)
+      runit (>= 0.0.0)
+    jpackage (0.10.0)
+      java (>= 0)
+    leiningen (0.2.0)
+      java (>= 0)
+    postfix (0.8.4)
+    runit (0.14.2)
+
+GIT
+  remote: https://github.com/heavywater/chef-gpg
+  ref: develop
+  sha: b5a9afaf5dd7bd98dbaef6b5a5dc5e019e167e01
+  specs:
+    gpg (0.0.1)
+
+GIT
+  remote: https://github.com/heavywater/chef-pennyworth
+  ref: develop
+  sha: a79827615265a6de81fd5083c506ecd0f11782d7
+  specs:
+    pennyworth (0.2.2)
+      ant (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      java (>= 0.0.0)
+      jenkins (>= 0.0.0)
+      leiningen (>= 0.0.0)
+      postfix (>= 0.0.0)
+      reprepro (>= 0.0.0)
+
+GIT
+  remote: https://github.com/heavywater/chef-reprepro
+  ref: develop
+  sha: bc98fb624a95d09f18a2224b46c348642b646586
+  specs:
+    reprepro (0.2.2)
+      apache2 (>= 0.0.0)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      gpg (>= 0.0.0)
+
+DEPENDENCIES
+  ant (>= 0)
+  apache2 (>= 0)
+  apt (>= 0)
+  build-essential (>= 0)
+  gpg (>= 0)
+  java (>= 0)
+  leiningen (>= 0)
+  pennyworth (>= 0)
+  postfix (>= 0)
+  reprepro (>= 0)
+  runit (>= 0)
+
