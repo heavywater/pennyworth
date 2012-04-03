@@ -42,7 +42,7 @@ GIT
 GIT
   remote: https://github.com/heavywater/chef-reprepro
   ref: develop
-  sha: 938ff021408f674ae7637951c39bda19644396c2
+  sha: b6823b988730b4e7c1c3c2fc48e39804b04a02e6
   specs:
     reprepro (0.2.2)
       apache2 (>= 0.0.0)
