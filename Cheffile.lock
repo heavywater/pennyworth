@@ -28,7 +28,7 @@ GIT
 GIT
   remote: https://github.com/heavywater/chef-pennyworth
   ref: develop
-  sha: a79827615265a6de81fd5083c506ecd0f11782d7
+  sha: 7ed86daafe46851849dbb03a6f8f1b7e23ebef0b
   specs:
     pennyworth (0.2.2)
       ant (>= 0.0.0)
@@ -42,7 +42,7 @@ GIT
 GIT
   remote: https://github.com/heavywater/chef-reprepro
   ref: develop
-  sha: bc98fb624a95d09f18a2224b46c348642b646586
+  sha: 938ff021408f674ae7637951c39bda19644396c2
   specs:
     reprepro (0.2.2)
       apache2 (>= 0.0.0)
