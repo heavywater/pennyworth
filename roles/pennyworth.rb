@@ -9,39 +9,41 @@ run_list( "recipe[reprepro]",
           "recipe[pennyworth::dependencies]",
           "recipe[pennyworth]" )
 
-default_attributes( "java" => { "install_flavor" => "openjdk" },
-                    "jenkins" => {
-                      "http_proxy" => {
-                        "variant" => "apache2"
-                      },
-                      "server" => {
-                        "host" => "127.0.0.1",
-                        "plugins" => [
-                                      'setenv',
-                                      'git',
-                                      'python',
-                                      'ruby',
-                                      'rake',
-                                      'greenballs',
-                                      'xunit',
-                                      'campfire'
-                                     ]
-                      } },
-                    "postfix" => {
-                      "mail_type" => "master"
-                    },
-                    "pennyworth" => {
-                      "package_dependencies" => [
-                                                 "git",
-                                                 "libtool",
-                                                 "uuid-dev"
-                                                ],
-                      "ruby_gem_dependencies" => [
-                                                  "fpm",
-                                                  "bundler",
-                                                  "rake",
-                                                  "rdoc",
-                                                  "rspec",
-                                                  "cucumber"
+override_attributes( "java" => { "install_flavor" => "openjdk" },
+                     "jenkins" => {
+                       "http_proxy" => {
+                         "variant" => "apache2"
+                       },
+                       "server" => {
+                         "url" => "http://127.0.0.1:8080",
+                         "host" => "127.0.0.1",
+                         "port" => "8080",
+                         "plugins" => [
+                                       'setenv',
+                                       'git',
+                                       'python',
+                                       'ruby',
+                                       'rake',
+                                       'greenballs',
+                                       'xunit',
+                                       'campfire'
+                                      ]
+                       } },
+                     "postfix" => {
+                       "mail_type" => "master"
+                     },
+                     "pennyworth" => {
+                       "package_dependencies" => [
+                                                  "git",
+                                                  "libtool",
+                                                  "uuid-dev"
                                                  ],
-                    } )
+                       "ruby_gem_dependencies" => [
+                                                   "fpm",
+                                                   "bundler",
+                                                   "rake",
+                                                   "rdoc",
+                                                   "rspec",
+                                                   "cucumber"
+                                                  ],
+                     } )
