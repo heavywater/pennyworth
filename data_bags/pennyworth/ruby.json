@@ -8,7 +8,7 @@
   "git_url" : "git://github.com/ruby/ruby.git",
   "test_commands" : [
     "autoconf",
-    "./configure --prefix=/usr/local --disable-install-doc",
+    "./configure --prefix=/usr/local --disable-install-doc --with-baseruby=/opt/opscode/embedded/bin/ruby",
     "make test"
   ],
   "build_commands" : [
@@ -18,16 +18,14 @@
     // Setup and build the deb package for Ruby, including a few paths
     // and adding the ldconfig dpkg-trigger.
     "mkdir -p fpm",
-    "cd fpm; fpm -s dir -t deb -n ruby1.9.3-full -v \$VERSION -C \$DESTDIR -p ruby1.9.3-full-VERSION_ARCH.deb --post-install /var/lib/jenkins/ldconfig usr/local/bin usr/local/include /usr/local/lib usr/local/share",
+    "cd fpm; /opt/opscode/embedded/bin/fpm -s dir -t deb -n ruby1.9.3-full -v \$VERSION -C \$DESTDIR -p ruby1.9.3-full-VERSION_ARCH.deb --post-install /var/lib/jenkins/ldconfig usr/local/bin usr/local/include /usr/local/lib usr/local/share",
     // Include the package into reprepro
-    "sudo /usr/bin/reprepro -Vb /srv/apt includedeb \$LSB_CODENAME \$DESTDIR/ruby1.9.3-full-\$VERSION_*.deb",
-    // Update the databag, if we're running on chef-client
-    "if [ -f /etc/chef/client.rb ]; then sudo /usr/local/bin/update_version.rb \$JOB_NAME \$VERSION; fi"
+    "sudo /usr/bin/reprepro -Vb /srv/apt includedeb \$LSB_CODENAME \$DESTDIR/ruby1.9.3-full-\$VERSION_*.deb"
   ],
   "child_projects" : [
       "install-dependency-packages"
   ],
-  "remote_poll": true,
+  "remote_poll": false,
   "clean" : true,
   "wipeoutworkspace" : true
 }
