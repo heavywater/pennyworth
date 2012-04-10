@@ -3,7 +3,7 @@ GEM
   specs:
     archive-tar-minitar (0.5.2)
     bunny (0.7.9)
-    chef (0.10.9)
+    chef (0.10.10.beta.1)
       bunny (>= 0.6.0)
       erubis
       highline
@@ -80,6 +80,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  chef (>= 0.10.10.beta.1)
   json (= 1.5.2)
   librarian (~> 0.0.12)
   vagrant (~> 1.0)
