@@ -1,3 +1,5 @@
+* NOTE: This project has been abandoned.
+
 * pennyworth 0.2.2
 
   #+BEGIN_QUOTE
